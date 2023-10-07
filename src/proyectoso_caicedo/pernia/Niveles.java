@@ -12,17 +12,17 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Luisp
+ * @author Frank Caicedo
  */
-public class Narrativa extends Observable implements Runnable {
+public class Niveles extends Observable implements Runnable {
     
     int DuracionDia;
     int tipoEmpresa;
     Drive Carpeta;
     Semaphore Semaforo;
 
-    public Narrativa(int duraciondia, int tipoEmpresa,Semaphore Semaforo, Drive Carpeta) {
-        this.DuracionDia = duraciondia * 1000;
+    public Niveles(int duraciondia, int tipoEmpresa,Semaphore Semaforo, Drive Carpeta) {
+        this.DuracionDia = duraciondia;
         this.tipoEmpresa = tipoEmpresa;
         this.Semaforo = Semaforo;
         this.Carpeta = Carpeta;
@@ -49,9 +49,11 @@ public class Narrativa extends Observable implements Runnable {
             Semaforo.acquire();
             }catch (InterruptedException ex) {Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
         }
-        char guion = 'g';
-        Carpeta.InsertarNarrativa(guion);
+        char niveles = 'n';
+        Carpeta.InsertarNiveles(niveles);
         Semaforo.release();
     }
         }
+        
+    
 }
