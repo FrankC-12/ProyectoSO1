@@ -16,48 +16,32 @@ import java.util.logging.Logger;
  */
 public class Artista extends Observable implements Runnable {
     int DuracionDia;
-    int tipoEmpresa;
+    int cantidadSSporDia;
     Drive Carpeta;
     Semaphore Semaforo;
 
-    public Artista(int duraciondia, int tipoEmpresa,Semaphore Semaforo, Drive Carpeta) {
+    public Artista(int duraciondia,Semaphore Semaforo, Drive Carpeta, int cantidadSSporDia) {
         this.DuracionDia = duraciondia * 1000;
-        this.tipoEmpresa = tipoEmpresa;
         this.Semaforo = Semaforo;
         this.Carpeta = Carpeta;
+        this.cantidadSSporDia = cantidadSSporDia;
     }
 
     @Override
     public void run() {
-        //Capcom es 0
+        try {
         while(true){
-            if (tipoEmpresa == 0) {
-            try {
-                sleep(DuracionDia);
-                Semaforo.acquire();
-                char artista = 'a';
-                for (int i = 1; i <=1; i++) {
-                    Carpeta.InsertarArtistas(artista);
-                }
-                Semaforo.release();
-            } catch (InterruptedException ex) {
+        sleep(DuracionDia);
+        Semaforo.acquire();
+        char artista = 'a';
+        for (int i = 1; i <=cantidadSSporDia; i++) {
+            Carpeta.InsertarArtistas(artista);
+            
+        }
+        Semaforo.release();
+        }
+        } catch (InterruptedException ex) {
                 Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
-        else{
-            try {
-                sleep(DuracionDia );
-                Semaforo.acquire();
-                char artista = 'a';
-                for (int i = 1; i <=3; i++) {
-                    Carpeta.InsertarArtistas(artista);
-                }
-                Semaforo.release();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
-        }
-        
+    }    
 }

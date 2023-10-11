@@ -15,11 +15,9 @@ import java.util.logging.Logger;
 public class Tiempo extends Observable implements Runnable{
     
     int duraciondias;
-    int dias;
 
     public Tiempo(int duraciondias) {
         this.duraciondias = duraciondias*1000;
-        this.dias = 0;
     }
 
     @Override
@@ -30,9 +28,9 @@ public class Tiempo extends Observable implements Runnable{
         } catch (InterruptedException ex) {
             Logger.getLogger(Tiempo.class.getName()).log(Level.SEVERE, null, ex);
         }
-    dias++;
+    ProyectoSO_CaicedoPernia.dias++;
     this.setChanged();
-    this.notifyObservers(dias);
+    this.notifyObservers(ProyectoSO_CaicedoPernia.dias);
     this.clearChanged();
     }   
     

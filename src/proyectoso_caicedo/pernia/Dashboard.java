@@ -4,14 +4,30 @@
  */
 package proyectoso_caicedo.pernia;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.Observable;
 import java.util.Observer;
+import javax.swing.JOptionPane;
+import static proyectoso_caicedo.pernia.EmpresaCapcom.HilosDLC;
+import static proyectoso_caicedo.pernia.ProyectoSO_CaicedoPernia.H3;
 
 /**
  *
  * @author Luisp
  */
 public class Dashboard extends javax.swing.JFrame implements Observer  {
+    
+//    FileWriter archivoCapcom = null;
+    FileWriter archivoBethesda = null;
+    PrintWriter escritor = null;
+    PrintWriter escritor2 = null;
+    FileReader archivoLecturaC = null;
+    FileReader archivoLecturaB = null;
+    BufferedReader lector = null;
+    BufferedReader lector2 = null;
 
     /**
      * Creates new form Dashboard
@@ -38,6 +54,35 @@ public class Dashboard extends javax.swing.JFrame implements Observer  {
         jLabel2 = new javax.swing.JLabel();
         Dia = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        CantidadArtista = new javax.swing.JSpinner();
+        CantidadLogica = new javax.swing.JSpinner();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        CantidadDLC = new javax.swing.JSpinner();
+        jLabel8 = new javax.swing.JLabel();
+        CantidadNiveles = new javax.swing.JSpinner();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        EDispo = new javax.swing.JLabel();
+        CantidadNarrativa1 = new javax.swing.JSpinner();
+        CantidadNiveles1 = new javax.swing.JSpinner();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        EDispo1 = new javax.swing.JLabel();
+        CantidadArtista1 = new javax.swing.JSpinner();
+        CantidadLogica1 = new javax.swing.JSpinner();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        CantidadDLC1 = new javax.swing.JSpinner();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        CantidadNarrativa = new javax.swing.JSpinner();
+        CantidadIntegradores = new javax.swing.JSpinner();
+        CantidadIntegradores1 = new javax.swing.JSpinner();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
 
@@ -52,6 +97,8 @@ public class Dashboard extends javax.swing.JFrame implements Observer  {
         jLabel1.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Duración del día:");
+
+        DuracionDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 10, 1));
 
         jLabel2.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
@@ -68,39 +115,263 @@ public class Dashboard extends javax.swing.JFrame implements Observer  {
             }
         });
 
+        jLabel3.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Narrativa:");
+
+        jLabel4.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel5.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Artista:");
+
+        CantidadArtista.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
+
+        CantidadLogica.setModel(new javax.swing.SpinnerNumberModel(1, 0, 13, 1));
+
+        jLabel6.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Programador de Lógica:");
+
+        jLabel7.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Desarrollador DLC:");
+
+        CantidadDLC.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
+
+        jLabel8.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Integradores:");
+
+        CantidadNiveles.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
+
+        jLabel9.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Diseñador de niveles:");
+
+        jLabel10.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Cantidad Máxima de Trabajadores:");
+
+        EDispo.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        EDispo.setForeground(new java.awt.Color(0, 0, 0));
+        EDispo.setText("18");
+
+        CantidadNarrativa1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+
+        CantidadNiveles1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+
+        jLabel11.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Diseñador de niveles:");
+
+        jLabel12.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("Cantidad Máxima de Trabajadores:");
+
+        jLabel13.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("Artista:");
+
+        EDispo1.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        EDispo1.setForeground(new java.awt.Color(0, 0, 0));
+        EDispo1.setText("10");
+
+        CantidadArtista1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+
+        CantidadLogica1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+
+        jLabel14.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("Programador de Lógica:");
+
+        jLabel15.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel15.setText("Desarrollador DLC:");
+
+        CantidadDLC1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+
+        jLabel16.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel16.setText("Integradores:");
+
+        jLabel17.setFont(new java.awt.Font("Dubai Light", 0, 11)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel17.setText("Narrativa:");
+
+        CantidadNarrativa.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
+
+        CantidadIntegradores.setModel(new javax.swing.SpinnerNumberModel(1, 1, 13, 1));
+
+        CantidadIntegradores1.setModel(new javax.swing.SpinnerNumberModel(1, 1, 5, 1));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DuracionDia, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DuracionDia, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Dia, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(20, 20, 20))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 276, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Dia, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CantidadNarrativa, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CantidadNiveles, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(CantidadDLC, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(CantidadLogica, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(CantidadArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(CantidadIntegradores, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(EDispo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel17)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CantidadNarrativa1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(CantidadNiveles1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(EDispo1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel15)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(CantidadDLC1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel14)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(CantidadLogica1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel13)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(CantidadArtista1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel16)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(CantidadIntegradores1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(97, 97, 97)))
+                .addGap(20, 20, 20))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(DuracionDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 169, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(Dia)
-                    .addComponent(jButton1))
-                .addGap(22, 22, 22))
+                .addGap(53, 53, 53)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(EDispo)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(CantidadNarrativa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(CantidadNiveles, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(CantidadArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(CantidadLogica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(CantidadDLC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(CantidadIntegradores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(EDispo1)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel17)
+                            .addComponent(CantidadNarrativa1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(CantidadNiveles1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(CantidadArtista1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14)
+                            .addComponent(CantidadLogica1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel15)
+                            .addComponent(CantidadDLC1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel16)
+                            .addComponent(CantidadIntegradores1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(DuracionDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(Dia))
+                        .addContainerGap())))
         );
 
         jTabbedPane1.addTab("Dashboard", jPanel2);
@@ -152,10 +423,147 @@ public class Dashboard extends javax.swing.JFrame implements Observer  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Tiempo t1 = new Tiempo((int) this.DuracionDia.getValue());
-        t1.addObserver(this);
-        Thread h1 = new Thread(t1);
-        h1.start();
+        
+        boolean CorrectoCapcom = false;
+        boolean CorrectoBethesda = false;
+        
+        if((int)this.CantidadNiveles.getValue()+(int)this.CantidadNarrativa.getValue()+(int)this.CantidadLogica.getValue()+(int)this.CantidadDLC.getValue()+(int)this.CantidadArtista.getValue()+(int)this.CantidadIntegradores.getValue()==18){
+        CorrectoCapcom = true;
+        }
+        else{
+        JOptionPane.showMessageDialog(this,"La cantidad de trabajores de Capcom  ingresada es incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        if((int)this.CantidadNiveles1.getValue()+(int)this.CantidadNarrativa1.getValue()+(int)this.CantidadLogica1.getValue()+(int)this.CantidadDLC1.getValue()+(int)this.CantidadArtista1.getValue()+(int)this.CantidadIntegradores1.getValue()==10){
+        CorrectoBethesda = true;
+        }
+        else{
+        JOptionPane.showMessageDialog(this,"La cantidad de trabajores de Bethesda ingresada es incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        if (ProyectoSO_CaicedoPernia.indicadorObjetosEmpresa){
+            System.out.println("LLego 1");
+           ProyectoSO_CaicedoPernia.H1.interrupt();
+           ProyectoSO_CaicedoPernia.H2.interrupt();
+           ProyectoSO_CaicedoPernia.H3.interrupt();
+           
+            for (int i = 0; i < EmpresaCapcom.HilosNiveles.length; i++) {
+                EmpresaCapcom.HilosNiveles[i].interrupt();
+            }
+        
+            for (int i = 0; i < EmpresaCapcom.HilosNarrativa.length; i++) {
+                EmpresaCapcom.HilosNiveles[i].interrupt();
+            }
+           
+            for (int i = 0; i < EmpresaCapcom.HilosLogica.length; i++) {
+                EmpresaCapcom.HilosNiveles[i].interrupt();
+            }
+           
+            for (int i = 0; i < EmpresaCapcom.HilosArtista.length; i++) {
+                EmpresaCapcom.HilosNiveles[i].interrupt();
+            }
+            
+            for (int i = 0; i < EmpresaCapcom.HilosDLC.length; i++) {
+                EmpresaCapcom.HilosNiveles[i].interrupt();
+            }
+            
+            
+            
+            for (int i = 0; i < EmpresaBethesda.HilosNivelesB.length; i++) {
+                EmpresaCapcom.HilosNiveles[i].interrupt();
+            }
+            
+            for (int i = 0; i < EmpresaBethesda.HilosNarrativaB.length; i++) {
+                EmpresaCapcom.HilosNiveles[i].interrupt();
+            }
+            
+            for (int i = 0; i < EmpresaBethesda.HilosLogicaB.length; i++) {
+                EmpresaCapcom.HilosNiveles[i].interrupt();
+            }
+            
+            for (int i = 0; i < EmpresaBethesda.HilosArtistaB.length; i++) {
+                EmpresaCapcom.HilosNiveles[i].interrupt();
+            }
+            
+            for (int i = 0; i < EmpresaBethesda.HilosDLCB.length; i++) {
+                EmpresaCapcom.HilosNiveles[i].interrupt();
+            }
+          
+           
+        }
+        
+        if(CorrectoCapcom && CorrectoBethesda){
+            
+           
+        
+        try{    
+        FileWriter archivoCapcom = new FileWriter("C:/Users/Luisp/OneDrive/Desktop/ArchivoTXTCapcom.txt");
+//        archivoCapcom.write("Esto es una prueba");
+//        archivoCapcom.close();
+        escritor = new PrintWriter(archivoCapcom);
+        escritor.println(String.valueOf(this.CantidadNiveles.getValue()));
+        escritor.println(String.valueOf(this.CantidadNarrativa.getValue()));
+        escritor.println(String.valueOf(this.CantidadLogica.getValue()));
+        escritor.println(String.valueOf(this.CantidadDLC.getValue()));
+        escritor.println(String.valueOf(this.CantidadArtista.getValue()));
+        escritor.println(String.valueOf(this.CantidadIntegradores.getValue()));
+        escritor.println(String.valueOf(this.DuracionDia.getValue()));
+        
+        archivoCapcom.close();
+
+        
+        archivoBethesda = new FileWriter("C:/Users/Luisp/OneDrive/Desktop/ArchivoTXTBethesda.txt");
+        escritor2 = new PrintWriter(archivoBethesda);
+        escritor2.println(String.valueOf(this.CantidadNiveles1.getValue()));
+        escritor2.println(String.valueOf(this.CantidadNarrativa1.getValue()));
+        escritor2.println(String.valueOf(this.CantidadLogica1.getValue()));
+        escritor2.println(String.valueOf(this.CantidadDLC1.getValue()));
+        escritor2.println(String.valueOf(this.CantidadArtista1.getValue()));
+        escritor2.println(String.valueOf(this.CantidadIntegradores1.getValue()));
+        escritor2.println(String.valueOf(this.DuracionDia.getValue()));
+        
+        archivoBethesda.close();
+        
+        
+        archivoLecturaC = new FileReader("C:/Users/Luisp/OneDrive/Desktop/ArchivoTXTCapcom.txt");
+        if (archivoLecturaC.ready()){
+        lector = new BufferedReader(archivoLecturaC);
+        String cadena;
+        String[] Capcom = new String[7];
+        int i = 0;
+        while((cadena = lector.readLine())!=null){
+        Capcom[i] = cadena;
+        i++;
+        }
+        EmpresaCapcom C1 = new EmpresaCapcom(Integer.parseInt(Capcom[0]),Integer.parseInt(Capcom[1]),Integer.parseInt(Capcom[2]),Integer.parseInt(Capcom[3]),Integer.parseInt(Capcom[4]),Integer.parseInt(Capcom[5]));
+        ProyectoSO_CaicedoPernia.H1 = new Thread(C1);
+        ProyectoSO_CaicedoPernia.H1.start();
+        }
+
+        archivoLecturaB = new FileReader("C:/Users/Luisp/OneDrive/Desktop/ArchivoTXTBethesda.txt");
+        if (archivoLecturaB.ready()){
+        lector2 = new BufferedReader(archivoLecturaB);
+        String cadena1;
+        String[] Bethesda = new String[7];
+        int i = 0;
+        while((cadena1 = lector2.readLine())!=null){
+        Bethesda[i] = cadena1;
+        i++;
+        }
+        EmpresaBethesda B1 = new EmpresaBethesda(Integer.parseInt(Bethesda[0]),Integer.parseInt(Bethesda[1]),Integer.parseInt(Bethesda[2]),Integer.parseInt(Bethesda[3]),Integer.parseInt(Bethesda[4]),Integer.parseInt(Bethesda[5]));
+        ProyectoSO_CaicedoPernia.H2 = new Thread(B1);
+        ProyectoSO_CaicedoPernia.H2.start();
+        
+        
+        }
+        }
+        
+        catch (Exception e){
+                System.out.println("Error" + e);
+                }
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -188,17 +596,48 @@ public class Dashboard extends javax.swing.JFrame implements Observer  {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Dashboard().setVisible(true);
+                new Dashboard().setVisible(true);      
+               
+               
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner CantidadArtista;
+    private javax.swing.JSpinner CantidadArtista1;
+    private javax.swing.JSpinner CantidadDLC;
+    private javax.swing.JSpinner CantidadDLC1;
+    private javax.swing.JSpinner CantidadIntegradores;
+    private javax.swing.JSpinner CantidadIntegradores1;
+    private javax.swing.JSpinner CantidadLogica;
+    private javax.swing.JSpinner CantidadLogica1;
+    private javax.swing.JSpinner CantidadNarrativa;
+    private javax.swing.JSpinner CantidadNarrativa1;
+    private javax.swing.JSpinner CantidadNiveles;
+    private javax.swing.JSpinner CantidadNiveles1;
     private javax.swing.JLabel Dia;
     private javax.swing.JSpinner DuracionDia;
+    private javax.swing.JLabel EDispo;
+    private javax.swing.JLabel EDispo1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JPanel jPanel2;

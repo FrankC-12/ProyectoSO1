@@ -17,42 +17,29 @@ import java.util.logging.Logger;
 public class DLC extends Observable implements Runnable {
     
     int DuracionDia;
-    int tipoEmpresa;
     Drive Carpeta;
+    int DiasporDLC;
     Semaphore Semaforo;
 
-    public DLC(int duraciondia, int tipoEmpresa,Semaphore Semaforo, Drive Carpeta) {
-        this.DuracionDia = duraciondia;
-        this.tipoEmpresa = tipoEmpresa;
+    public DLC(int duraciondia,Semaphore Semaforo, Drive Carpeta, int DiasporDLC) {
+        this.DuracionDia = duraciondia * 1000;
         this.Semaforo = Semaforo;
         this.Carpeta = Carpeta;
+        this.DiasporDLC = DiasporDLC;
     }
 
     @Override
     public void run() {
-        while(true){
-            try{
-            if (tipoEmpresa == 0) {
-                try {
-                    sleep(DuracionDia * 2);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            else{
-                try {
-                    sleep(DuracionDia * 3);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+      try{
+        while(true){ 
+            sleep(DuracionDia*DiasporDLC);    
             Semaforo.acquire();
-            }catch (InterruptedException ex) {Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        char dlc = 'd';
-        Carpeta.InsertarDLC(dlc);
-        Semaforo.release();
-    }
-        }
-    
+            char DLC = 'd';
+            Carpeta.InsertarDLC(DLC);
+            Semaforo.release();
+            }
+        }catch (InterruptedException ex) {
+                Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
+            }     
+    }  
 }

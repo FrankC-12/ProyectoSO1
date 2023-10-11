@@ -18,40 +18,30 @@ public class Narrativa extends Observable implements Runnable {
     
     int DuracionDia;
     int tipoEmpresa;
+    int DiasporGuion;
     Drive Carpeta;
     Semaphore Semaforo;
 
-    public Narrativa(int duraciondia, int tipoEmpresa,Semaphore Semaforo, Drive Carpeta) {
+    public Narrativa(int duraciondia, Semaphore Semaforo, Drive Carpeta, int DiasporGuion) {
         this.DuracionDia = duraciondia * 1000;
-        this.tipoEmpresa = tipoEmpresa;
         this.Semaforo = Semaforo;
         this.Carpeta = Carpeta;
+        this.DiasporGuion = DiasporGuion;
     }
 
     @Override
     public void run() {
-        while(true){
-            try{
-            if (tipoEmpresa == 0) {
-                try {
-                    sleep(DuracionDia * 4);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            else{
-                try {
-                    sleep(DuracionDia * 2);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        try{
+        while(true){ 
+            
+            sleep(DuracionDia*DiasporGuion);    
             Semaforo.acquire();
-            }catch (InterruptedException ex) {Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        char guion = 'g';
-        Carpeta.InsertarNarrativa(guion);
-        Semaforo.release();
+            char guion = 'g';
+            Carpeta.InsertarNarrativa(guion);
+            Semaforo.release();
+            }
+        }catch (InterruptedException ex) {
+                Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
-        }
 }

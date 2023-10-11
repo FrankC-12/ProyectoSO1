@@ -17,47 +17,31 @@ import java.util.logging.Logger;
 public class Logica extends Observable implements Runnable {
     
     int DuracionDia;
-    int tipoEmpresa;
     Drive Carpeta;
     Semaphore Semaforo;
+    int cantidadSporDia;
 
-    public Logica(int duraciondia, int tipoEmpresa,Semaphore Semaforo, Drive Carpeta) {
-        this.DuracionDia = duraciondia;
-        this.tipoEmpresa = tipoEmpresa;
+    public Logica(int duraciondia,Semaphore Semaforo, Drive Carpeta, int cantidadSporDia) {
+        this.DuracionDia = duraciondia * 1000;
         this.Semaforo = Semaforo;
         this.Carpeta = Carpeta;
+        this.cantidadSporDia = cantidadSporDia;
     }
 
     @Override
     public void run() {
-        //Capcom es 0
+        try {
         while(true){
-            if (tipoEmpresa == 0) {
-            try {
-                sleep(DuracionDia);
-                Semaforo.acquire();
-                char logica = 'l';
-                for (int i = 1; i <=5; i++) {
-                    Carpeta.InsertarLogicas(logica);
-                }
-                Semaforo.release();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        sleep(DuracionDia);
+        Semaforo.acquire();
+        char sistemas = 's';
+        for (int i = 1; i <=cantidadSporDia; i++) {
+            Carpeta.InsertarLogicas(sistemas);
         }
-        else{
-            try {
-                sleep(DuracionDia );
-                Semaforo.acquire();
-                char logica = 'l';
-                for (int i = 1; i <=3; i++) {
-                    Carpeta.InsertarLogicas(logica);
-                }
-                Semaforo.release();
-            } catch (InterruptedException ex) {
+        Semaforo.release();
+        }
+        } catch (InterruptedException ex) {
                 Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
     }
-        }
 }

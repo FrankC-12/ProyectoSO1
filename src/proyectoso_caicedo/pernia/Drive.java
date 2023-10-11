@@ -4,8 +4,6 @@
  */
 package proyectoso_caicedo.pernia;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -13,34 +11,24 @@ import java.util.logging.Logger;
  */
 public class Drive {
     
-    char[] CarpetaNarrativaC;
-    int posicionNarrativaC;
-    int posicionNivelesC;
-    int posicionArtistaC;
-    int posicionLogicaC;
-    int posicionDLCC;
+    String nombre;
     
-    char[] CarpetaNarrativaB;
-    int posicionNarrativaB;
-    int posicionNivelesB;
-    int posicionArtistaB;
-    int posicionLogicaB;
-    int posicionDLCB;
+    char[] CarpetaNarrativa;
+    int posicionNarrativa;
+    int posicionNiveles;
+    int posicionArtista;
+    int posicionLogica;
+    int posicionDLC;
+ 
+    char[] CarpetaNiveles;
+    char[] CarpetaArtista;
+    char[] CarpetaLogica;
+    char[] CarpetaDLC;
     
-    char[] CarpetaNivelesC;
-    char[] CarpetaArtistaC;
-    char[] CarpetaLogicaC;
-    char[] CarpetaDLCC;
-    
-    char[] CarpetaNivelesB;
-    char[] CarpetaArtistaB;
-    char[] CarpetaLogicaB;
-    char[] CarpetaDLCB;
 
-    public Drive() {
-        this.CarpetaNarrativaC = new char[25] ;
-        this.CarpetaNarrativaB = new char[25] ;
-
+    public Drive(String nombre) {
+        this.nombre = nombre;
+        this.CarpetaNarrativa = new char[25] ;
         this.CarpetaNiveles = new char[20];
         this.CarpetaArtista = new char[55];
         this.CarpetaLogica = new char[35];
@@ -55,62 +43,47 @@ public class Drive {
     
     public void InsertarNarrativa(char g){
         if (posicionNarrativa==CarpetaNarrativa.length){
-            try {
-                wait();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
+        else{
         CarpetaNarrativa[posicionNarrativa] = g;
         posicionNarrativa++;
+        }
     }
     
     public void InsertarNiveles(char g){
         if (posicionNiveles==CarpetaNiveles.length){
-            try {
-                wait();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
-        CarpetaNarrativa[posicionNarrativa] = g;
-        posicionNarrativa++;
+        else{
+        CarpetaNiveles[posicionNiveles] = g;
+        posicionNiveles++;
+        }
     }
     
     public void InsertarArtistas(char g){
-        if (posicionNiveles==CarpetaNiveles.length){
-            try {
-                wait();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if (posicionArtista==CarpetaArtista.length){
+        } 
+        else{
+        CarpetaArtista[posicionArtista] = g;
+        posicionArtista++;
         }
-        CarpetaNarrativa[posicionNarrativa] = g;
-        posicionNarrativa++;
     }
     
     public void InsertarLogicas(char g){
         if (posicionLogica==CarpetaLogica.length){
-            try {
-                wait();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } 
+        else{
+        CarpetaLogica[posicionLogica] = g;
+        posicionLogica++;
+        System.out.println("Se agrega s " + nombre);
         }
-        CarpetaNarrativa[posicionNarrativa] = g;
-        posicionNarrativa++;
     }
     
     public void InsertarDLC(char g){
         if (posicionDLC==CarpetaDLC.length){
-            try {
-                wait();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Drive.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        }else{
+        CarpetaDLC[posicionDLC] = g;
+        posicionDLC++;
         }
-        CarpetaNarrativa[posicionNarrativa] = g;
-        posicionNarrativa++;
     }
     
     

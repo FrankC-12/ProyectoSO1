@@ -17,43 +17,31 @@ import java.util.logging.Logger;
 public class Niveles extends Observable implements Runnable {
     
     int DuracionDia;
-    int tipoEmpresa;
     Drive Carpeta;
+    int DiasporNivel;
     Semaphore Semaforo;
 
-    public Niveles(int duraciondia, int tipoEmpresa,Semaphore Semaforo, Drive Carpeta) {
-        this.DuracionDia = duraciondia;
-        this.tipoEmpresa = tipoEmpresa;
+    public Niveles(int duraciondia,Semaphore Semaforo, Drive Carpeta, int DiasporNivel) {
+        this.DuracionDia = duraciondia * 1000;
         this.Semaforo = Semaforo;
         this.Carpeta = Carpeta;
+        this.DiasporNivel = DiasporNivel;
     }
 
     @Override
     public void run() {
-        while(true){
-            try{
-            if (tipoEmpresa == 0) {
-                try {
-                    sleep(DuracionDia * 4);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            else{
-                try {
-                    sleep(DuracionDia * 2);
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        try{
+        while(true){ 
+            sleep(DuracionDia*DiasporNivel);    
             Semaforo.acquire();
-            }catch (InterruptedException ex) {Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        char niveles = 'n';
-        Carpeta.InsertarNiveles(niveles);
-        Semaforo.release();
+            char nivel = 'n';
+            Carpeta.InsertarNiveles(nivel);
+            Semaforo.release();
+            }
+        }catch (InterruptedException ex) {
+                Logger.getLogger(Narrativa.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
-        }
         
     
 }
